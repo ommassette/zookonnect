@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+{% load services_extras %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/services.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== INNER HERO ===== -->
+<section class="inner-hero" id="services-hero">
+    {% if hero and hero.background_image %}
+        <img src="{{ hero.background_image.url }}" alt="Services" class="inner-hero-bg" />
+    {% else %}
+        <img src="{% static 'images/default-services-hero.jpg' %}" alt="Services" class="inner-hero-bg" />
+    {% endif %}
+    <div class="inner-hero-overlay"></div>
+    <div class="inner-hero-content">
+        <div class="breadcrumb-custom">
+            <i class="bi bi-house-fill"></i>
+            {% if hero %}
+                {{ hero.breadcrumb_home }}
+                <span>{{ hero.breadcrumb_separator }}</span>
+                {{ hero.breadcrumb_current }}
+            {% else %}
+                Home <span> / </span> Services
+            {% endif %}
+        </div>
+        <!-- Hardcoded hero title -->
+        <h1>Our <span class="highlight">Services</span></h1>
+        {% if hero and hero.subtitle %}
+            <p>{{ hero.subtitle }}</p>
+        {% else %}
+            <p>Fast, reliable internet for every need — from home browsing to enterprise-grade connectivity.</p>
+        {% endif %}
+    </div>
+</section>
+
+<!-- ===== SERVICES OVERVIEW ===== -->
+<section id="services">
+    <div class="container">
+        <div class="text-center mb-5">
+            <!-- Hardcoded badge and title -->
+            <span class="section-badge">What We Offer</span>
+            <h2 class="section-title">Internet for <span class="highlight">Everyone</span></h2>
+            <p class="section-sub mx-auto">Choose the perfect plan for your home or business. All plans come with 24/7 support and 99.9% uptime.</p>
+        </div>
+
+        <div class="row g-4">
+            {% if services %}
+                {% for service in services %}
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="icon-wrap"><i class="bi {{ service.icon }}"></i></div>
+                        <h3>{{ service.title }}</h3>
+                        <p>{{ service.description }}</p>
+                        <span class="service-tag {{ service.tag_style }}">{{ service.tag_text }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-12 text-center py-5">
+                    <p class="text-muted">No services added yet. Check back soon.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section id="features">
+    <div class="container">
+        <div class="text-center mb-4">
+            <!-- Hardcoded badge and title -->
+            <span class="section-badge">Why Choose Us</span>
+            <h2 class="section-title">Features That <span class="highlight">Matter</span></h2>
+            <p class="section-sub mx-auto">Every connection comes with these industry‑leading features.</p>
+        </div>
+
+        <div class="features-grid">
+            {% if features %}
+                {% for feature in features %}
+                <div class="feature-item">
+                    <span class="f-icon"><i class="bi {{ feature.icon }}"></i></span>
+                    <div>
+                        <h5>{{ feature.title }}</h5>
+                        <p>{{ feature.description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-12 text-center py-5" style="grid-column: 1 / -1;">
+                    <p class="text-muted">No features added yet. Check back soon.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- ===== PLANS ===== -->
+<section id="plans">
+    <div class="container">
+        <div class="text-center mb-4">
+            <!-- Hardcoded badge and title -->
+            <span class="section-badge">Pricing</span>
+            <h2 class="section-title">Choose Your <span class="highlight">Plan</span></h2>
+            <p class="section-sub mx-auto">Flexible plans for every budget. Upgrade or downgrade anytime – no penalties.</p>
+        </div>
+
+        <!-- Toggle Buttons (hardcoded labels, but icons from DB? we keep them static) -->
+        <div class="plan-toggle-wrapper text-center mb-4">
+            <div class="plan-toggle-group">
+                <button class="plan-toggle-btn active" data-plan="home" id="toggleHome">
+                    <i class="bi bi-house-door"></i> Home Plans
+                </button>
+                <button class="plan-toggle-btn" data-plan="business" id="toggleBusiness">
+                    <i class="bi bi-building"></i> Business Plans
+                </button>
+            </div>
+        </div>
+
+        <div class="plans-grid" id="plansGrid">
+            {% if plans %}
+                {% for plan in plans %}
+                <div class="plan-card {% if plan.is_popular %}popular{% endif %}" data-plan="{{ plan.category }}">
+                    <div class="plan-name">{{ plan.name }}</div>
+                    <div class="plan-speed">{{ plan.speed }}</div>
+                    <div class="plan-price">{{ plan.price }} <small>{{ plan.price_period }}</small></div>
+                    <p class="plan-desc">{{ plan.description }}</p>
+                    <ul class="plan-features">
+                        {% for feature in plan.features|split:',' %}
+                        <li><i class="bi bi-check-circle-fill"></i> {{ feature|strip }}</li>
+                        {% endfor %}
+                    </ul>
+                    <a href="{{ plan.button_url }}" class="btn-plan {% if plan.button_style == 'outline' %}outline{% endif %}">
+                        {{ plan.button_text }}
+                    </a>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-12 text-center py-5" style="grid-column: 1 / -1;">
+                    <p class="text-muted">No plans added yet. Check back soon.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section">
+    <div class="container">
+        {% if cta %}
+            <h2>{{ cta.title|safe }}</h2>
+            <p>{{ cta.subtitle }}</p>
+            <a href="{{ cta.button_url }}" class="btn-cta"><i class="bi bi-rocket-takeoff"></i> {{ cta.button_text }}</a>
+        {% else %}
+            <!-- Fallback hardcoded CTA (since it's optional) -->
+            <h2>Ready to <span class="highlight">Get Connected</span>?</h2>
+            <p>Join thousands of satisfied customers across Kenya. Get fast, reliable internet today.</p>
+            <a href="/contact/" class="btn-cta"><i class="bi bi-rocket-takeoff"></i> Sign Up Now</a>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static 'js/services.js' %}"></script>
+<script>
+    // Plan toggle functionality (for both real and empty state)
+    const toggleHome = document.getElementById('toggleHome');
+    const toggleBusiness = document.getElementById('toggleBusiness');
+    const allPlans = document.querySelectorAll('.plan-card');
+
+    function showPlans(type) {
+        allPlans.forEach(plan => {
+            if (plan.dataset.plan === type) {
+                plan.style.display = 'block';
+                plan.style.opacity = '1';
+                plan.style.transform = 'translateY(0)';
+            } else {
+                plan.style.display = 'none';
+            }
+        });
+        document.querySelectorAll('.plan-toggle-btn').forEach(btn => btn.classList.remove('active'));
+        if (type === 'home') {
+            toggleHome.classList.add('active');
+        } else {
+            toggleBusiness.classList.add('active');
+        }
+    }
+
+    if (toggleHome && toggleBusiness) {
+        toggleHome.addEventListener('click', function() { showPlans('home'); });
+        toggleBusiness.addEventListener('click', function() { showPlans('business'); });
+        // Show home by default
+        showPlans('home');
+    }
+</script>
+{% endblock %}

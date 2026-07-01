@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <section class="hero" id="home">
+        {% if hero.background_image %}
+        <img src="{{ hero.background_image.url }}" alt="Fiber Internet" class="hero-bg" />
+        {% endif %}
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>{{ hero.heading_text|safe }}</h1>
+            <p>{{ hero.subheading_text }}</p>
+        </div>
+    </section>
+
+    <section id="coverage">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-badge">Coverage</span>
+                <h2 class="section-title">Check Your <span class="highlight">Coverage</span></h2>
+                <p class="section-sub mx-auto">Our network spans Nairobi, Eldoret, and Kisii counties. Explore the areas we serve.</p>
+            </div>
+
+            <div class="row g-4 align-items-stretch">
+                <div class="col-lg-5">
+                    <div class="row g-3 h-100">
+                        {% for area in coverage_areas %}
+                        <div class="col-12 col-md-6 col-lg-12">
+                            <div class="city-card">
+                                <img src="{{ area.image.url }}" alt="{{ area.city_name }}" />
+                                <div class="city-label"><i class="bi bi-geo-alt-fill"></i> {{ area.city_name }}</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="glass-card p-2 h-100">
+                        <div id="coverageMap"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3 mt-4">
+                {% for tile in metric_tiles %}
+                <div class="col-md-4">
+                    <div class="orange-tile">
+                        <i class="bi {{ tile.icon_class }}"></i>
+                        <h5>{{ tile.title }}</h5>
+                        <p class="mb-0">{{ tile.metric_value }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="relocation">
+        <div class="container">
+            <div class="row g-5 align-items-start">
+                <div class="col-lg-5">
+                    <span class="section-badge">Move With Us</span>
+                    <h2 class="section-title">Relocation <span class="highlight">Request</span></h2>
+                    <p class="text-muted">Moving to a new home? Let us transfer your connection seamlessly. Fill in the details below and our team will handle the rest.</p>
+                    <div class="d-flex flex-wrap gap-3 mt-3">
+                        <div><i class="bi bi-check-circle-fill" style="color: var(--orange-main);"></i> No installation fee</div>
+                        <div><i class="bi bi-check-circle-fill" style="color: var(--orange-main);"></i> Same‑day transfer</div>
+                        <div><i class="bi bi-check-circle-fill" style="color: var(--orange-main);"></i> Keep your plan</div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="glass-card p-4">
+                        <h4 class="fw-bold mb-3">Request a Move</h4>
+                        
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <form id="relocationForm" method="POST" action="{% url 'process_relocation' %}">
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="form-label fw-semibold">Current Address</label>
+                                    <input type="text" name="current_address" class="form-control" placeholder="E.g. Westlands, Nairobi" required />
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-semibold">New Address</label>
+                                    <input type="text" name="new_address" class="form-control" placeholder="E.g. Eldoret CBD" required />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Preferred Move Date</label>
+                                    <input type="date" name="move_date" class="form-control" required />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Phone Number</label>
+                                    <input type="tel" name="contact_phone" class="form-control" placeholder="+254 7XX XXX XXX" required />
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-semibold">Additional Notes</label>
+                                    <textarea name="additional_notes" class="form-control" rows="2" placeholder="Any special instructions..."></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn-submit">Submit Relocation Request</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="speedtest">
+        <div class="container text-center">
+            <span class="section-badge" style="background: var(--orange-light); color: var(--navy-dark);">Test</span>
+            <h2 class="section-title text-white">Free <span class="highlight">Speed Test</span></h2>
+            <p class="section-sub mx-auto">Check your download, upload, and ping latency with Fast.com. Click below to start.</p>
+
+            <div class="speedtest-iframe-wrapper">
+                <iframe src="https://fast.com" allow="autoplay; encrypted-media" loading="lazy"></iframe>
+            </div>
+            <p class="text-white-50 small mt-3">Results are provided by Fast.com – no data is stored.</p>
+        </div>
+    </section>
+
+{{ coverage_areas_json|json_script:"coverage-data" }}
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/index.js' %}"></script>
+{% endblock %}

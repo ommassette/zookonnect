@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== INNER HERO ===== -->
+<section class="inner-hero" id="about">
+    {% if hero and hero.background_image %}
+    <img src="{{ hero.background_image.url }}" alt="About ZooKonnect" class="inner-hero-bg" />
+    {% else %}
+    <img src="{% static 'images/default-hero.jpg' %}" alt="About" class="inner-hero-bg" />
+    {% endif %}
+    <div class="inner-hero-overlay"></div>
+    <div class="inner-hero-content">
+        <div class="breadcrumb-custom">
+            <i class="bi bi-house-fill"></i>
+            {% if hero %}
+                {{ hero.breadcrumb_home }}
+                <span>{{ hero.breadcrumb_separator }}</span>
+                {{ hero.breadcrumb_current }}
+            {% else %}
+                Home <span> / </span> About
+            {% endif %}
+        </div>
+        <!-- Hardcoded heading -->
+        <h1>About <span class="highlight">ZooKonnect</span></h1>
+        {% if hero and hero.subtitle %}
+        <p>{{ hero.subtitle }}</p>
+        {% else %}
+        <p>We're on a mission to connect Kenya with fast, reliable, and affordable internet.</p>
+        {% endif %}
+    </div>
+</section>
+
+<!-- ===== STORY SECTION ===== -->
+<section id="story">
+    <div class="container">
+        <div class="story-grid">
+            <!-- Orange Tile -->
+            <div class="story-tile-orange">
+                <!-- Hardcoded "Our Story" badge -->
+                <span class="tile-badge"><i class="bi bi-lightning-fill"></i> Our Story</span>
+                {% if story %}
+                    <h2>{{ story.title|safe }}</h2>
+                    <p>{{ story.description }}</p>
+                    <div class="story-stats">
+                        {% for stat in story.stats.all %}
+                        <div class="stat-item">
+                            <span class="number">{{ stat.number }}</span>
+                            <span class="label">{{ stat.label }}</span>
+                        </div>
+                        {% empty %}
+                        <div class="stat-item">
+                            <span class="number">—</span>
+                            <span class="label">No stats yet</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <h2>Connecting Kenya</h2>
+                    <p>Our story is being written. Check back soon for updates.</p>
+                    <div class="story-stats">
+                        <div class="stat-item">
+                            <span class="number">—</span>
+                            <span class="label">Coming soon</span>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- White Tile -->
+            <div class="story-tile-white">
+                <!-- Hardcoded "Our Milestones" with trophy icon -->
+                <h3><i class="bi bi-trophy"></i> Our Milestones</h3>
+                <p>From a small startup to a trusted ISP — here's how we've grown.</p>
+                <ul class="milestone-list">
+                    {% if story and story.milestones.all %}
+                        {% for milestone in story.milestones.all %}
+                        <li>
+                            <span class="icon"><i class="bi {{ milestone.icon }}"></i></span>
+                            <span class="content">
+                                {{ milestone.year }} — {{ milestone.title }}
+                                <small>{{ milestone.description }}</small>
+                            </span>
+                        </li>
+                        {% endfor %}
+                    {% else %}
+                        <li>
+                            <span class="icon"><i class="bi bi-info-circle"></i></span>
+                            <span class="content">No milestones added yet.</span>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section id="why-choose">
+    <div class="container">
+        <div class="text-center mb-4">
+            <!-- Hardcoded "Why ZooKonnect" badge and heading -->
+            <span class="section-badge">Why ZooKonnect</span>
+            <h2 class="section-title">Why Choose <span class="highlight">Us</span></h2>
+            <p class="section-sub mx-auto">We deliver more than just internet — we deliver peace of mind.</p>
+        </div>
+
+        <div class="why-grid">
+            {% if why_items %}
+                {% for item in why_items %}
+                <div class="why-card">
+                    <div class="icon-wrap"><i class="bi {{ item.icon }}"></i></div>
+                    <h4>{{ item.title }}</h4>
+                    <p>{{ item.description }}</p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="why-card">
+                    <div class="icon-wrap"><i class="bi bi-plus-circle"></i></div>
+                    <h4>Coming Soon</h4>
+                    <p>We're adding more reasons to choose us. Stay tuned!</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static 'js/about.js' %}"></script>
+{% endblock %}

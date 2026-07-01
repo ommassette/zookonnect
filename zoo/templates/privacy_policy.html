@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | {{ config.site_name|default:"Konnect" }}</title>
+    <meta name="description" content="Privacy Policy for Konnect. Learn how we collect, use, and protect your personal details, relocation requests, and contact submissions.">
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    <style>
+        body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+        h1 { font-size: 2.25rem; color: #111; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; color: #222; margin-top: 2rem; margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 0.25rem; }
+        p, ul { margin-bottom: 1rem; }
+        ul { padding-left: 1.5rem; }
+        .meta { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
+    </style>
+</head>
+<body>
+
+<main>
+    <h1>Privacy Policy</h1>
+    <p class="meta">Effective Date: January 1, {% now "Y" %}</p>
+
+    <p>Welcome to {{ config.site_name|default:"Konnect" }}. We value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and share information when you use our website, submit queries, or request relocation services.</p>
+
+    <h2>1. Information We Collect</h2>
+    <p>We collect information that you explicitly provide to us through our online forms:</p>
+    <ul>
+        <li><strong>Contact Information:</strong> When you use our contact form, we collect your full name, email address, phone number, message subject, and the content of your message.</li>
+        <li><strong>Relocation Request Information:</strong> When you request service relocation, we collect your current address, new address, preferred move date, contact phone number, and any additional operational notes you submit.</li>
+        <li><strong>Technical Data:</strong> We may log anonymous usage metrics, network coverage interactions, and device characteristics to ensure proper display and performance tuning.</li>
+    </ul>
+
+    <h2>2. How We Use Your Information</h2>
+    <p>We process your data strictly to fulfill your requested services and maintain secure site functionality. Specifically, we use it to:</p>
+    <ul>
+        <li>Process and catalog your contact submissions and respond to your messages.</li>
+        <li>Review, log, and action your relocation requests, allowing our authorized agents to reach out to you directly.</li>
+        <li>Optimize our network coverage maps, metric tile deliveries, and database configurations.</li>
+        <li>Enforce strict protection standards, prevent malicious behavior, and monitor secure site operations.</li>
+    </ul>
+
+    <h2>3. Data Protection and Retention</h2>
+    <p>We deploy production-grade security layers to protect your submitted data. Access is strictly constrained via administrative access control parameters. Your personal data is only retained for as long as necessary to fulfill business transactions, resolve inquiries, or fulfill regulatory legal duties.</p>
+
+    <h2>4. Cookies and Security Controls</h2>
+    <p>Our platform implements security-focused cookies to protect against Cross-Site Request Forgery (CSRF) and validation vulnerabilities. Session cookies are transmitted exclusively over encrypted HTTPS paths. Disabling cookies in your web browser could alter the operational capacity and security features of this platform.</p>
+
+    <h2>5. Third-Party Data Processing</h2>
+    <p>We do not sell, rent, or trade your personal verification information. Information might be hosted securely on cloud assets or processing platforms (such as database or media asset handlers) that comply strictly with mandatory end-to-end security configurations.</p>
+
+    <h2>6. Your Rights</h2>
+    <p>You have the right to request access to the personal records we hold about you, request corrections to erroneous entries, or demand complete deletion of your submitted request profiles. Please communicate any such requests to our operations team.</p>
+
+    <h2>7. Contact Us</h2>
+    <p>If you have questions regarding this policy, security protocols, or data management actions, reach out via the communication details established in our configuration records.</p>
+</main>
+
+</body>
+</html>
