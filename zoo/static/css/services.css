@@ -1,16 +1,15 @@
-
-        :root {
-            --orange-deep: #CC4400;
-            --orange-main: #F57C00;
-            --orange-light: #FFB74D;
-            --orange-pale: #FFF3E0;
-            --navy-dark: #0A1A2B;
-            --navy-mid: #1A365D;
-            --navy-light: #4A6A8A;
-            --navy-pale: #E2E8F0;
-            --glass-bg: rgba(255, 255, 255, 0.10);
-            --glass-border: rgba(255, 255, 255, 0.18);
-            --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.2);
+:root {
+            --primary-deep: #003399;
+            --primary-main: #0066FF;
+            --primary-light: #4DA6FF;
+            --primary-pale: #EBF5FF;
+            --navy-dark: #0B192C;
+            --navy-mid: #1E3E62;
+            --navy-light: #508C9B;
+            --navy-pale: #FFFFFF;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.50);
+            --shadow-glass: 0 8px 32px rgba(0, 102, 255, 0.12);
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -91,7 +90,7 @@
             transition: color var(--transition);
         }
         .navbar-brand i {
-            color: var(--orange-main);
+            color: var(--primary-main);
         }
 
         .navbar-nav .nav-link {
@@ -110,7 +109,7 @@
             left: 50%;
             width: 0;
             height: 2px;
-            background: var(--orange-main);
+            background: var(--primary-main);
             transition: all var(--transition);
             transform: translateX(-50%);
         }
@@ -155,17 +154,17 @@
             font-size: 0.9rem;
         }
         .dropdown-menu .dropdown-item:hover {
-            background: rgba(245, 124, 0, 0.15);
+            background: rgba(0, 102, 255, 0.15);
             color: #fff;
         }
         .dropdown-menu .dropdown-item:active {
-            background: var(--orange-main);
+            background: var(--primary-main);
             color: #fff;
         }
 
         /* CTA Button in nav */
         .btn-nav-cta {
-            background: var(--orange-main) !important;
+            background: var(--primary-main) !important;
             color: #fff !important;
             padding: 0.5rem 1.8rem !important;
             border-radius: 40px !important;
@@ -176,9 +175,9 @@
             display: none !important;
         }
         .btn-nav-cta:hover {
-            background: var(--orange-deep) !important;
+            background: var(--primary-deep) !important;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(245, 124, 0, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
         }
 
         /* Navbar toggler (hamburger) - white */
@@ -190,7 +189,7 @@
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
         }
         .navbar-toggler:focus {
-            box-shadow: 0 0 0 3px rgba(245, 124, 0, 0.3);
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.3);
         }
 
         /* ===== RESPONSIVE: Mobile nav & Dope Dropdown ===== */
@@ -245,7 +244,7 @@
                 transition: all 0.25s ease !important;
             }
             .navbar-nav .dropdown-menu .dropdown-item:hover {
-                background: linear-gradient(135deg, rgba(245, 124, 0, 0.3), rgba(245, 124, 0, 0.05)) !important;
+                background: linear-gradient(135deg, rgba(0, 102, 255, 0.3), rgba(0, 102, 255, 0.05)) !important;
                 color: #fff !important;
                 transform: translateX(6px);
             }
@@ -294,7 +293,7 @@
             inset: 0;
             z-index: 1;
             background:
-                radial-gradient(circle at 30% 30%, rgba(245, 124, 0, 0.2), rgba(10, 26, 43, 0.85) 70%);
+                radial-gradient(circle at 30% 30%, rgba(0, 102, 255, 0.2), rgba(10, 26, 43, 0.85) 70%);
         }
         .inner-hero-content {
             position: relative;
@@ -312,7 +311,7 @@
             letter-spacing: -0.02em;
         }
         .inner-hero h1 .highlight {
-            background: linear-gradient(135deg, var(--orange-light), var(--orange-main));
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-main));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -331,7 +330,7 @@
             border: 1px solid rgba(255, 255, 255, 0.12);
             padding: 0.3rem 1.6rem;
             border-radius: 40px;
-            color: var(--orange-light);
+            color: var(--primary-light);
             font-weight: 500;
             font-size: 0.85rem;
             letter-spacing: 0.3px;
@@ -363,7 +362,7 @@
         /* ===== SECTION HEADERS ===== */
         .section-badge {
             display: inline-block;
-            background: var(--orange-main);
+            background: var(--primary-main);
             color: #fff;
             font-weight: 700;
             font-size: 0.75rem;
@@ -380,7 +379,7 @@
             letter-spacing: -0.02em;
         }
         .section-title .highlight {
-            color: var(--orange-main);
+            color: var(--primary-main);
         }
         .section-sub {
             font-size: 1.15rem;
@@ -396,7 +395,7 @@
             width: 100%;
         }
         .service-card {
-            background: var(--orange-pale);
+            background: var(--primary-pale);
             border-radius: 24px;
             padding: 3rem 2.5rem;
             text-align: center;
@@ -406,14 +405,14 @@
         }
         .service-card:hover {
             transform: translateY(-8px);
-            border-color: var(--orange-main);
-            box-shadow: 0 20px 60px rgba(245, 124, 0, 0.12);
+            border-color: var(--primary-main);
+            box-shadow: 0 20px 60px rgba(0, 102, 255, 0.12);
         }
         .service-card .icon-wrap {
             width: 80px;
             height: 80px;
             margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, var(--orange-main), var(--orange-deep));
+            background: linear-gradient(135deg, var(--primary-main), var(--primary-deep));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -424,7 +423,7 @@
         }
         .service-card:hover .icon-wrap {
             transform: scale(1.08) rotate(-4deg);
-            box-shadow: 0 8px 30px rgba(245, 124, 0, 0.3);
+            box-shadow: 0 8px 30px rgba(0, 102, 255, 0.3);
         }
         .service-card h3 {
             font-size: 1.6rem;
@@ -440,7 +439,7 @@
         }
         .service-card .service-tag {
             display: inline-block;
-            background: var(--orange-main);
+            background: var(--primary-main);
             color: #fff;
             padding: 0.2rem 1.2rem;
             border-radius: 30px;
@@ -468,7 +467,7 @@
         /* ===== FEATURES & BENEFITS ===== */
         #features {
             padding: 5rem 0;
-            background: var(--orange-pale);
+            background: var(--primary-pale);
             width: 100%;
         }
         .features-grid {
@@ -486,7 +485,7 @@
             gap: 1.2rem;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
             transition: all var(--transition);
-            border-left: 4px solid var(--orange-main);
+            border-left: 4px solid var(--primary-main);
         }
         .feature-item:hover {
             transform: translateX(6px);
@@ -494,7 +493,7 @@
         }
         .feature-item .f-icon {
             font-size: 1.8rem;
-            color: var(--orange-main);
+            color: var(--primary-main);
             flex-shrink: 0;
             margin-top: 0.1rem;
         }
@@ -543,18 +542,18 @@
             border-radius: 24px;
             padding: 2.5rem 2rem;
             text-align: center;
-            border: 2px solid var(--orange-pale);
+            border: 2px solid var(--primary-pale);
             transition: all var(--transition);
             position: relative;
         }
         .plan-card:hover {
-            border-color: var(--orange-main);
+            border-color: var(--primary-main);
             transform: translateY(-6px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
         }
         .plan-card.popular {
-            border-color: var(--orange-main);
-            background: var(--orange-pale);
+            border-color: var(--primary-main);
+            background: var(--primary-pale);
         }
         .plan-card.popular::before {
             content: 'Most Popular';
@@ -562,7 +561,7 @@
             top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--orange-main);
+            background: var(--primary-main);
             color: #fff;
             padding: 0.2rem 1.6rem;
             border-radius: 30px;
@@ -585,7 +584,7 @@
         .plan-card .plan-price {
             font-size: 3rem;
             font-weight: 800;
-            color: var(--orange-main);
+            color: var(--primary-main);
             line-height: 1;
         }
         .plan-card .plan-price small {
@@ -618,12 +617,12 @@
             border-bottom: none;
         }
         .plan-card .plan-features li i {
-            color: var(--orange-main);
+            color: var(--primary-main);
             font-size: 1.1rem;
             width: 1.4rem;
         }
         .plan-card .btn-plan {
-            background: var(--orange-main);
+            background: var(--primary-main);
             color: #fff;
             border: none;
             padding: 0.7rem 2.5rem;
@@ -634,18 +633,18 @@
             display: inline-block;
         }
         .plan-card .btn-plan:hover {
-            background: var(--orange-deep);
+            background: var(--primary-deep);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(245, 124, 0, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
             color: #fff;
         }
         .plan-card .btn-plan.outline {
             background: transparent;
-            color: var(--orange-main);
-            border: 2px solid var(--orange-main);
+            color: var(--primary-main);
+            border: 2px solid var(--primary-main);
         }
         .plan-card .btn-plan.outline:hover {
-            background: var(--orange-main);
+            background: var(--primary-main);
             color: #fff;
         }
 
@@ -681,7 +680,7 @@
             margin-bottom: 1rem;
         }
         .cta-section h2 .highlight {
-            color: var(--orange-light);
+            color: var(--primary-light);
         }
         .cta-section p {
             color: rgba(255, 255, 255, 0.7);
@@ -690,7 +689,7 @@
             margin: 0 auto 2rem;
         }
         .cta-section .btn-cta {
-            background: var(--orange-main);
+            background: var(--primary-main);
             color: #fff;
             border: none;
             padding: 0.9rem 3rem;
@@ -702,9 +701,9 @@
             display: inline-block;
         }
         .cta-section .btn-cta:hover {
-            background: var(--orange-deep);
+            background: var(--primary-deep);
             transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(245, 124, 0, 0.4);
+            box-shadow: 0 12px 40px rgba(0, 102, 255, 0.4);
             color: #fff;
         }
 
@@ -747,7 +746,7 @@
 
         /* ===== FOOTER ===== */
         footer {
-            background: var(--orange-main) !important;
+            background: var(--primary-main) !important;
             color: #fff;
             padding: 4rem 0 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -789,7 +788,7 @@
 }
 .plan-toggle-group {
     display: inline-flex;
-    background: var(--orange-pale);
+    background: var(--primary-pale);
     border-radius: 50px;
     padding: 0.3rem;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
@@ -812,13 +811,13 @@
     font-size: 1.1rem;
 }
 .plan-toggle-btn.active {
-    background: var(--orange-main);
+    background: var(--primary-main);
     color: #fff;
-    box-shadow: 0 4px 16px rgba(245, 124, 0, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 102, 255, 0.3);
 }
 .plan-toggle-btn:hover:not(.active) {
     color: var(--navy-dark);
-    background: rgba(245, 124, 0, 0.06);
+    background: rgba(0, 102, 255, 0.06);
 }
 
 /* ===== PLAN CARDS TRANSITION ===== */

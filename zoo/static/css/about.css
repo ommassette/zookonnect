@@ -1,15 +1,15 @@
-        :root {
-            --orange-deep: #CC4400;
-            --orange-main: #F57C00;
-            --orange-light: #FFB74D;
-            --orange-pale: #FFF3E0;
-            --navy-dark: #0A1A2B;
-            --navy-mid: #1A365D;
-            --navy-light: #4A6A8A;
-            --navy-pale: #E2E8F0;
-            --glass-bg: rgba(255, 255, 255, 0.10);
-            --glass-border: rgba(255, 255, 255, 0.18);
-            --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.2);
+:root {
+            --orange-deep: #003399;
+            --orange-main: #0066FF;
+            --orange-light: #4DA6FF;
+            --orange-pale: #EBF5FF;
+            --navy-dark: #0B192C;
+            --navy-mid: #1E3E62;
+            --navy-light: #508C9B;
+            --navy-pale: #FFFFFF;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.50);
+            --shadow-glass: 0 8px 32px rgba(0, 102, 255, 0.12);
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -294,7 +294,7 @@
             inset: 0;
             z-index: 1;
             background:
-                radial-gradient(circle at 30% 30%, rgba(245, 124, 0, 0.2), rgba(10, 26, 43, 0.85) 70%);
+                radial-gradient(circle at 30% 30%, rgba(0, 102, 255, 0.2), rgba(10, 26, 43, 0.85) 70%);
         }
         .inner-hero-content {
             position: relative;

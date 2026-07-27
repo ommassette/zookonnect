@@ -8,23 +8,22 @@ from .models import (
 )
 
 def index_view(request):
-    config = SiteConfiguration.objects.first()
     hero = HeroSection.objects.first()
     metric_tiles = NetworkMetricTile.objects.all()
     
-    coverage_areas_list = []
-    for area in CoverageArea.objects.all():
-        coverage_areas_list.append({
+    coverage_areas_list = [
+        {
             'city_name': area.city_name,
             'latitude': area.latitude,
             'longitude': area.longitude,
             'radius_multiplier': area.radius_multiplier,
             'hex_color': area.hex_color,
             'image_url': area.image.url if area.image else ''
-        })
+        }
+        for area in CoverageArea.objects.all()
+    ]
     
     context = {
-        'config': config,
         'hero': hero,
         'coverage_areas': CoverageArea.objects.all(),
         'coverage_areas_json': coverage_areas_list,
@@ -56,12 +55,10 @@ def process_relocation_view(request):
     return redirect('index')
 
 def privacy_policy_view(request):
-    config = SiteConfiguration.objects.first()
-    return render(request, 'privacy_policy.html', {'config': config})
+    return render(request, 'privacy_policy.html')
 
 def contact_view(request):
-    config = SiteConfiguration.objects.first()
-    return render(request, 'contact.html', {'config': config})
+    return render(request, 'contact.html')
 
 @require_POST
 def process_contact_view(request):
